@@ -1,5 +1,6 @@
 dataList = document.getElementsByTagName('pre')[0].innerText;
 dataList = dataList.split("\n");
+dataList.pop(); // as to remove the last element of the array resulting from the split with "\n"
 
 
 // Solution for part 1
@@ -7,9 +8,6 @@ dataList = dataList.split("\n");
 // But probably some more optimization to the rest of the process
 function getNbOfValidPasswords(passwordList){
     return passwordList.map(x => {
-        if(!x){
-            return;
-        }
         let min, max, letter, password, regularExp, totalCount;
         min = x.split("-")[0];
         max = x.split("-")[1].split(' ')[0];
@@ -32,9 +30,6 @@ function getNbOfValidPasswords(passwordList){
 // Same comment regarding optimization. 
 function getNbOfValidPasswordsForTobogan(passwordList){
     return passwordList.map(x => {
-        if(!x){
-            return;
-        }
         pos1 = x.split("-")[0] - 1; // dont use 0-index ಠ_ಠ
         pos2 = x.split("-")[1].split(' ')[0] - 1;
         letter = x.split(' ')[1].split(':')[0];
